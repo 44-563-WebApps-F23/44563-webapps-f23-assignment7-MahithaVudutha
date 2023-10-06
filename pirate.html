@@ -24,6 +24,20 @@
                 border: 1px solid #a196ec ;
                 background-color: rgb(255, 196, 196);
             }
+            .game_field{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 5xp;
+            width: 300px;
+            }
+           .location {
+            width: 70px;
+            height: 70px;
+            background-size: cover;
+            background-size: no-repeat;    
+            background-position: center;
+            border: 1px solid #98ec96;
+            }
         </style>
     </head>
     <body>
@@ -34,7 +48,7 @@
         <p2>Click for help.</p2>
         <p id="help">Help report</p>
 
-        <div class="game-field">
+        <div class="game_field">
             <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
             <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
             <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
