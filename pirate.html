@@ -45,39 +45,118 @@
         <p1>Click on the locations to search for treasure, beware the traps</p1>
         <p id="locations">Number of locations checked is zero.</p>
         <p id="penalty">Penalty is zero.</p>
-        <p2>Click for help.</p2>
-        <p id="help">Help report</p>
+        <div  class="bg-success p-2 text-dark bg-opacity-50" id="click_help" onclick="help()">Click for help.</div>
+        <div id="help" class="p-3 mb-2 bg-dark-subtle text-emphasis-dark" text-color:orange> Help report</div>
+    
 
         <div class="game_field">
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="0" onclick="check(0)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="1" onclick="check(1)"style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="2" onclick="check(2)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="3" onclick="check(3)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="4" onclick="check(4)" style="background-image: url('hidden_treasure.jpg');"></div>
     
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="5" onclick="check(5) " style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="6" onclick="check(6)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="7" onclick="check(7)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location"  id="8" onclick="check(8)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="9" onclick="check(9)" style="background-image: url('hidden_treasure.jpg');"></div>
     
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="10" onclick="check(10)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="11" onclick="check(11)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="12" onclick="check(12)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="13" onclick="check(13)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="14" onclick="check(14)" style="background-image: url('hidden_treasure.jpg');"></div>
     
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="15" onclick="check(15)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="16" onclick="check(16)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="17" onclick="check(17)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="18" onclick="check(18)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="19" onclick="check(19)" style="background-image: url('hidden_treasure.jpg');"></div>
     
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>
-            <div class="location" style="background-image: url('hidden_treasure.jpg');"></div>                       
+            <div class="location" id="20" onclick="check(20)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="21" onclick="check(21)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="22" onclick="check(22)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="23" onclick="check(23)" style="background-image: url('hidden_treasure.jpg');"></div>
+            <div class="location" id="24" onclick="check(24)" style="background-image: url('hidden_treasure.jpg');"></div>                       
          </div>
     </body>
+    <script>
+        let ids =[]
+        for(let i=0;i<25;i++)
+        {
+          ids[i]=i;
+        }
+        let checkCount = 0
+        let penalty = 0
+        let lastCheck = 0
+        let treasureLocation = 5
+        let trapLocation = 18
+        let gameOver = false
+        function check(p)
+        {
+          if(gameOver)
+          {
+            return
+          }
+          const img_id = ids[p]
+          tre_loc_img = document.getElementById(img_id)
+          if(p==treasureLocation)
+          {
+            tre_loc_img.src = "treasure.jpg"
+            gameOver=true
+            penalty = penalty-3
+          }
+          else if (p== trapLocation)
+          {
+            tre_loc_img.src = "trap.jpg"
+            gameOver=true
+            penalty=penalty+3
+          }
+          else
+          {
+            tre_loc_img.src="bones.jpg"
+          }
+          checkCount=checkCount+1
+          penalty=penalty+1
+          loc_text = document.getElementById("locations")
+          loc_text.innerHTML = `Number of locations checked is ${checkCount}`
+          pen_text = document.getElementById("penalty")
+          pen_text.innerHTML=`Penalty is ${penalty}`
+          lastCheck=p
+      
+        }
+        function help()
+        {
+          let col = lastCheck%5
+          let row = Math.floor(lastCheck/5)
+      
+          let treasureCol = treasureLocation%5
+          let treasureRow = Math.floor(treasureLocation/5)
+      
+          let col_diff = Math.abs(col-treasureCol) 
+          let row_diff = Math.abs(row-treasureRow)
+      
+          let report = ""
+      
+          if(((col_diff<=1)&&(row_diff==0))||((col_diff==0)&&(row_diff<=1)))
+          {
+            report = "Can smell it"
+          }
+          else if(Math.abs(row - treasureRow) + Math.abs(col - treasureCol)===2)
+          {
+            report = "Close Matie"
+          }
+          else
+          {
+            report = "Step Faster"
+          }
+          penalty=penalty+2
+          pen_text = document.getElementById("penalty")
+          pen_text.innerHTML=`Penalty is ${penalty}`
+          help_text = document.getElementById("help")
+          help_text.innerHTML=`Help report ${report}`
+        }
+        </script>
+
 </html>
